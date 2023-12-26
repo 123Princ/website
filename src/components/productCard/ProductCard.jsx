@@ -14,8 +14,13 @@ function ProductCard() {
     const [loadingStates, setLoadingStates] = useState(Array(AllProduct.length).fill(false));
 const navigate =useNavigate()
 
+const admin = JSON.parse(localStorage.getItem('user'))
+
     const addToCart = async (e,productId,index) => {
       e.stopPropagation();
+      if (admin?.user?.email === "princeadmin@gmail.com"){
+        return  toast.warning("only user oder")
+             }
         const newLoadingStates = [...loadingStates];
         newLoadingStates[index] = true;
         setLoadingStates(newLoadingStates);

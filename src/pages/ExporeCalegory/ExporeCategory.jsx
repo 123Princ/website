@@ -1,15 +1,16 @@
 import React, { useContext } from 'react'
 import Contextstore from '../../context/Data/StoreContext'
 import Loader from '../../components/loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
 const ExporeCategory = () => {
     const {Loading,AllProduct,mode}=useContext(Contextstore)
-   
+   const navigate =useNavigate()
     const uniqueCategories = [...new Set(AllProduct.map((item) => item.category ))];
          const product = AllProduct.filter((item,index)=>item.category === uniqueCategories[index] )
   return (
     <div>
-        <section className="text-gray-600 body-font">
+        <section className="text-gray-600 body-font" >
           {Loading && <Loader/>}
             <div className="container px-5 py-8 md:py-16 mx-auto">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-10">
@@ -25,7 +26,7 @@ const ExporeCategory = () => {
   )}
                     {product
                         ?.map((item,index) => (
-                            <div className="p-4 md:w-1/4  drop-shadow-lg " onClick={()=>navigate(`productinfo/${item.id}`)} >
+                            <div className="p-4 md:w-1/4  drop-shadow-lg " onClick={()=>navigate(`productfilter/${item.category}`)} >
                                 <div className="h-full border-2 hover:shadow-gray-100 hover:shadow-2xl transition-shadow duration-300 ease-in-out    border-gray-200 border-opacity-60 rounded-2xl overflow-hidden" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} >
                                     <div className="flex justify-center cursor-pointer" >
                                         <img className=" rounded-2xl w-full h-80 p-2 hover:scale-110 transition-scale-110  duration-300 ease-in-out" src={item?.imageurl} alt="blog" />
