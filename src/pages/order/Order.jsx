@@ -1,14 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Layout from '../../components/layout/layout'
 import Loader from '../../components/loader/Loader'
 import Contextstore from '../../context/Data/StoreContext'
 
 function Order() {
   const context = useContext(Contextstore)
-  const { mode, Loading, Order } = context
+  const { mode, Loading,getOrderData, Order } = context
+
+
+useEffect(()=>{
+  getOrderData()
+},[])
+
+
+
   return (
     <Layout>
-      {Loading ? <Loader />:<div className='h-full pt-10 text-center'>
+      {Loading  ? <Loader />: Order?.length == 0 &&<div className='h-full pt-10 text-center'>
         No order 
         </div>}
       {Order?.length > 0 ?

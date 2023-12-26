@@ -275,7 +275,7 @@ const addToCart = async (productId,index,setLoadingStates,loadingStates) => {
   }, []);
   return (
       
-      <Contextstore.Provider value={{mode,toggleMode,setLoading,searchkey,Adminorder,setSearchkey,filterType,setFilterType,filterPrice,addToCart,Cartproducts,Order,setFilterPrice,AllUsers,Loading,getUserCartData,addProduct,updateProduct,deleteProduct,isOpen,setIsOpen,AllProduct}}>
+      <Contextstore.Provider value={{mode,toggleMode,setLoading,searchkey,Adminorder,setSearchkey,filterType,setFilterType,filterPrice,addToCart,Cartproducts,Order,setFilterPrice,AllUsers,Loading,getUserCartData,addProduct,updateProduct,getOrderData,deleteProduct,isOpen,setIsOpen,AllProduct}}>
         {props.children}
       </Contextstore.Provider>
   )
