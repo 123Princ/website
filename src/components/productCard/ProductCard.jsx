@@ -14,8 +14,13 @@ function ProductCard() {
     const [loadingStates, setLoadingStates] = useState(Array(AllProduct.length).fill(false));
 const navigate =useNavigate()
 
+const admin = JSON.parse(localStorage.getItem('user'))
+
     const addToCart = async (e,productId,index) => {
       e.stopPropagation();
+      if (admin?.user?.email === "princeadmin@gmail.com"){
+        return  toast.warning("only user oder")
+             }
         const newLoadingStates = [...loadingStates];
         newLoadingStates[index] = true;
         setLoadingStates(newLoadingStates);
@@ -110,7 +115,7 @@ const navigate =useNavigate()
                                     </div>
                                     <div className="p-5 border-t-2">
                                         <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>E-Bharat</h2>
-                                        <h1 className="title-font text-lg font-medium text-gray-900 mb-3" style={{ color: mode === 'dark' ? 'white' : '', }}>{item?.title}</h1>
+                                        <h1 className="title-font text-lg h-10 font-medium text-gray-900 mb-3" style={{ color: mode === 'dark' ? 'white' : '', }}>{item?.title}</h1>
                                         {/* <p className="leading-relaxed mb-3">{item.description.}</p> */}
                                         <p className="leading-relaxed mb-3" style={{ color: mode === 'dark' ? 'white' : '' }}>₹ {item?.price}</p>
                                         <div className=" flex justify-center">

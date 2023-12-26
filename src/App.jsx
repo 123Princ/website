@@ -20,6 +20,8 @@ import AddProduct from './pages/Admin/pages/Addproduct';
 import UpdateProduct from './pages/Admin/pages/UpdateProduct';
 import ScrollToTop from './components/ScrollTop';
 import Allproduct from './pages/allproduct/Allproduct';
+import ProductCard from './components/productCard/ProductCard';
+import ProductFilter from './pages/productFilter/ProductFilter';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
         <Route path="/order" element={<ProtectedRoutesUser><Order/></ProtectedRoutesUser>} />
         <Route path="/cart" element={<ProtectedRoutesUser><Cart/> </ProtectedRoutesUser>} />
         <Route path="/productinfo/:id" element={<ProtectedRoutesUser><ProductInfo/> </ProtectedRoutesUser>} />
+        <Route path="/productfilter/:filter" element={<ProtectedRoutesUser><ProductFilter/> </ProtectedRoutesUser>} />
+
         <Route path="/allproducts" element={<ProtectedRoutesUser><Allproduct/> </ProtectedRoutesUser>} />
 
         <Route path="/login" element={<Login/>} />
